@@ -1,0 +1,59 @@
+group 'morbrian.j2ee-sandbox'
+
+buildscript {
+    repositories {
+        jcenter()
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'org.gradle.api.plugins:gradle-cargo-plugin:1.5'
+        classpath 'javax.servlet:servlet-api:2.5'
+    }
+}
+
+repositories {
+    mavenCentral()
+    jcenter()
+}
+
+/*  Apply required plugins.
+ */
+apply {
+    plugin 'war'
+    plugin 'cargo'
+    plugin 'java'
+}
+
+/*  Define custom properties.
+ */
+project.ext {
+    jbossHostname = 'jigsaw-integ'
+    jbossContainerId = 'jboss71x'
+    jbossHttpPort = 8080
+    jbossAdminPort = 9999
+    jbossUsername = 'admin'
+    jbossPassword = 's3cret'
+}
+
+
+dependencies {
+    def cargoVersion = '1.4.8'
+    cargo "org.codehaus.cargo:cargo-core-uberjar:$cargoVersion",
+        "org.codehaus.cargo:cargo-ant:$cargoVersion"
+    cargo 'org.jboss.as:jboss-as-controller-client:7.2.0.Final'
+    providedCompile "javax.servlet:javax.servlet-api:3.0.1"
+}
+
+cargo {
+    containerId = project.jbossContainerId
+    port = project.jbossAdminPort
+
+    remote {
+        hostname = project.jbossHostname
+        username = project.jbossUsername
+        password = project.jbossPassword
+    }
+}
+
+
+
