@@ -39,7 +39,7 @@ public class HiveJdbcClient {
                     "\"quoteChar\"     = \"\"\", " +
                     "\"escapeChar\"    = \"\\\" " +
             ") " +
-            "LOCATION 's3://elasticmapreduce/samples/pig-apache/input/';"
+            "LOCATION 'http://192.168.1.65:8080/rdbms2hive/api/rest/csv/fetch/1234567890-data.csv';"
     );
 
     // show tables
