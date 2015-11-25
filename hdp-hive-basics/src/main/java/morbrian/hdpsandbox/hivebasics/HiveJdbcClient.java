@@ -29,17 +29,19 @@ public class HiveJdbcClient {
 //    stmt.execute("create table " + tableName + " (key int, value string)");
 
     stmt.execute(
-    "CREATE TABLE movies(" +
-            "movie STRING," +
-            "rating STRING," +
-            "genre STRING) " +
-    "ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.OpenCSVSerde'" +
-            " WITH SERDEPROPERTIES (" +
-                    "\"separatorChar\" = \",\", " +
-                    "\"quoteChar\"     = \"\"\", " +
-                    "\"escapeChar\"    = \"\\\" " +
-            ") " +
-            "LOCATION 'http://192.168.1.65:8080/rdbms2hive/api/rest/csv/fetch/1234567890-data.csv';"
+    "CREATE TABLE " + tableName + " ( " +
+            "movie STRING, " +
+            "rating STRING, " +
+            "genre STRING) " //+
+//    "ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.OpenCSVSerde' " +
+//            " WITH SERDEPROPERTIES ( " +
+//                    "\"separatorChar\" = \",\" " +
+//                    //"\"quoteChar\"     = \"\\", " +
+//                    //"\"escapeChar\"    = \"\\\" " +
+//            ") " +
+//            "STORED AS TEXTFILE " +
+//            "LOCATION '/path/in/hdfs/to/csvfile'"
+            //"LOCATION 'http://192.168.1.65:8080/rdbms2hive/api/rest/csv/produce/myschema/mytable/myid'"
     );
 
     // show tables
@@ -49,7 +51,16 @@ public class HiveJdbcClient {
     if (res.next()) {
       System.out.println(res.getString(1));
     }
-       // describe table
+
+
+    stmt.execute(
+            "INSERT INTO " + tableName + " (movie, rating, genre)  VALUES " +
+                    "( 'Avatar', 'PG', 'Sci-Fi' ), " +
+                    "( 'How to Train Your Dragon', 'PG', 'Adventure' ) "
+    );
+
+
+    // describe table
     sql = "describe " + tableName;
     System.out.println("Running: " + sql);
     res = stmt.executeQuery(sql);
@@ -70,7 +81,7 @@ public class HiveJdbcClient {
     System.out.println("Running: " + sql);
     res = stmt.executeQuery(sql);
     while (res.next()) {
-      System.out.println(String.valueOf(res.getInt(1)) + "\t" + res.getString(2));
+      System.out.println(String.valueOf(res.getString(1)) + "\t" + res.getString(2));
     }
  
     // regular hive query
