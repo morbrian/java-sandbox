@@ -98,6 +98,7 @@
         <module>j2ee-jpa-basics</module>
         <module>j2ee-rdbms2hive</module>
         <module>hdp-hive-basics</module>
+        <module>j2ee-javascript-tricks</module>
     </modules>
 
 </project>
