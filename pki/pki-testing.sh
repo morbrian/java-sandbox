@@ -1,5 +1,7 @@
 #!/bin/sh
 set -x
+#SERVER_NAME=mpnov.sd.spawar.navy.mil
+SERVER_NAME=nuramoc
 USER_KEYSTORE=./userstore.jks
 SERVER_KEYSTORE=./serverstore.jks
 PASSWORD=ncsa1235813
@@ -55,18 +57,20 @@ createServerKeystore() {
     $(runGenkey $ALIAS $CN $PASSWORD $SERVER_KEYSTORE)
 }
 
+# Clean up previous artifacts
+rm *.cer *.jks *.p12
 
 # Create a bunch of sample users
 $(createNewIdentity moriarty Brian_Moriarty)
 $(createNewIdentity fring "Gus_Fring")
-#$(createNewIdentity grimes "Rick_Grimes")
-#$(createNewIdentity white "Walter_White")
-#$(createNewIdentity trump "Donald_Trump")
-#$(createNewIdentity sanders "Bernie_Sanders")
-#$(createNewIdentity clinton "Hillary_Clinton")
-#$(createNewIdentity carson "Ben_Carson")
+$(createNewIdentity grimes "Rick_Grimes")
+$(createNewIdentity white "Walter_White")
+$(createNewIdentity trump "Donald_Trump")
+$(createNewIdentity sanders "Bernie_Sanders")
+$(createNewIdentity clinton "Hillary_Clinton")
+$(createNewIdentity carson "Ben_Carson")
 
 # Create the server cert
-$(createServerKeystore mpnov.sd.spawar.navy.mil mpnov.sd.spawar.navy.mil)
+$(createServerKeystore $SERVER_NAME $SERVER_NAME)
 
 
