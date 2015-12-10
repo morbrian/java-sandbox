@@ -61,14 +61,14 @@ createServerKeystore() {
 rm *.cer *.jks *.p12
 
 # Create a bunch of sample users
-$(createNewIdentity moriarty Brian_Moriarty)
-$(createNewIdentity fring "Gus_Fring")
-$(createNewIdentity grimes "Rick_Grimes")
-$(createNewIdentity white "Walter_White")
-$(createNewIdentity trump "Donald_Trump")
-$(createNewIdentity sanders "Bernie_Sanders")
-$(createNewIdentity clinton "Hillary_Clinton")
-$(createNewIdentity carson "Ben_Carson")
+$(createNewIdentity dev_moriarty dev_Brian_Moriarty)
+$(createNewIdentity dev_fring "dev_Gus_Fring")
+$(createNewIdentity dev_grimes "dev_Rick_Grimes")
+$(createNewIdentity dev_white "dev_Walter_White")
+$(createNewIdentity dev_trump "dev_Donald_Trump")
+$(createNewIdentity dev_sanders "dev_Bernie_Sanders")
+$(createNewIdentity dev_clinton "dev_Hillary_Clinton")
+$(createNewIdentity dev_carson "dev_Ben_Carson")
 
 # Create the server cert
 $(createServerKeystore $SERVER_NAME $SERVER_NAME)
