@@ -1,3 +1,8 @@
+## certificate artifacts
+*.p12
+*.jks
+*.cer
+
 ## generic files to ignore
 *~
 *.lock
