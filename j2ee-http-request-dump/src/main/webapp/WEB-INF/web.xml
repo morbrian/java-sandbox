@@ -4,9 +4,10 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
 
-   <servlet>
+    <servlet>
         <servlet-name>SimpleRequestInspectorServlet</servlet-name>
-        <servlet-class>morbrian.j2eesandbox.requestdump.SimpleRequestInspectorServlet</servlet-class>
+        <servlet-class>morbrian.j2eesandbox.requestdump.SimpleRequestInspectorServlet
+        </servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>SimpleRequestInspectorServlet</servlet-name>

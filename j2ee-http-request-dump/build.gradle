@@ -39,7 +39,7 @@ project.ext {
 dependencies {
     def cargoVersion = '1.4.8'
     cargo "org.codehaus.cargo:cargo-core-uberjar:$cargoVersion",
-        "org.codehaus.cargo:cargo-ant:$cargoVersion"
+            "org.codehaus.cargo:cargo-ant:$cargoVersion"
     cargo 'org.jboss.as:jboss-as-controller-client:7.2.0.Final'
     providedCompile "javax.servlet:javax.servlet-api:3.0.1"
 }

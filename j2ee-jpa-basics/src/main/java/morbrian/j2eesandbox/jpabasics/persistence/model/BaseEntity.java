@@ -1,5 +1,7 @@
 package morbrian.j2eesandbox.jpabasics.persistence.model;
 
+import java.util.Calendar;
+
 import javax.persistence.Column;
 import javax.persistence.EntityListeners;
 import javax.persistence.GeneratedValue;
@@ -8,7 +10,6 @@ import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import java.util.Calendar;
 
 /**
  * Created by morbrian on 6/17/15.
@@ -18,66 +19,54 @@ import java.util.Calendar;
 // It informs the JPA implementation to include the annotated attributes from
 // this superclass as part of the table definition for java subclasses.
 // Without this, JPA won't understand the Java class hierarchy.
-@MappedSuperclass
-@EntityListeners({BaseEntityListener.class})
-public class BaseEntity {
+@MappedSuperclass @EntityListeners({BaseEntityListener.class}) public class BaseEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+  @Temporal(TemporalType.TIMESTAMP) @Column(name = "created_time", updatable = false) Calendar
+      createdTime;
+  @Temporal(TemporalType.TIMESTAMP) @Column(name = "modified_time") Calendar modifiedTime;
+  @Column(name = "created_by_uid", updatable = false, length = 255, nullable = false) String
+      createdByUid;
+  @Column(name = "modified_by_uid", length = 255, nullable = false) String modifiedByUid;
+  @Id @GeneratedValue(strategy = GenerationType.IDENTITY) private Long id;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "created_time", updatable = false)
-    Calendar createdTime;
+  public Long getId() {
+    return id;
+  }
 
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "modified_time")
-    Calendar modifiedTime;
+  public void setId(Long id) {
+    this.id = id;
+  }
 
-    @Column(name = "created_by_uid", updatable = false, length = 255, nullable = false)
-    String createdByUid;
+  public Calendar getCreatedTime() {
+    return createdTime;
+  }
 
-    @Column(name = "modified_by_uid", length = 255, nullable = false)
-    String modifiedByUid;
+  public void setCreatedTime(Calendar createdTime) {
+    this.createdTime = createdTime;
+  }
 
-    public Long getId() {
-        return id;
-    }
+  public Calendar getModifiedTime() {
+    return modifiedTime;
+  }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+  public void setModifiedTime(Calendar modifiedTime) {
+    this.modifiedTime = modifiedTime;
+  }
 
-    public Calendar getCreatedTime() {
-        return createdTime;
-    }
+  public String getCreatedByUid() {
+    return createdByUid;
+  }
 
-    public void setCreatedTime(Calendar createdTime) {
-        this.createdTime = createdTime;
-    }
+  public void setCreatedByUid(String createdByUid) {
+    this.createdByUid = createdByUid;
+  }
 
-    public Calendar getModifiedTime() {
-        return modifiedTime;
-    }
+  public String getModifiedByUid() {
+    return modifiedByUid;
+  }
 
-    public void setModifiedTime(Calendar modifiedTime) {
-        this.modifiedTime = modifiedTime;
-    }
-
-    public String getCreatedByUid() {
-        return createdByUid;
-    }
-
-    public void setCreatedByUid(String createdByUid) {
-        this.createdByUid = createdByUid;
-    }
-
-    public String getModifiedByUid() {
-        return modifiedByUid;
-    }
-
-    public void setModifiedByUid(String modifiedByUid) {
-        this.modifiedByUid = modifiedByUid;
-    }
+  public void setModifiedByUid(String modifiedByUid) {
+    this.modifiedByUid = modifiedByUid;
+  }
 
 }

@@ -11,24 +11,23 @@ import java.util.UUID;
  */
 public class DummyClient {
 
-    private static final String USER_AGENT = "JPABASICS - " + DummyClient.class.getName();
+  private static final String USER_AGENT = "JPABASICS - " + DummyClient.class.getName();
 
-    private Logger log = LoggerFactory.getLogger(DummyClient.class);
+  private Logger log = LoggerFactory.getLogger(DummyClient.class);
 
-    /**
-     *
-     * @return response content data
-     * @throws IOException when errors fetching data
-     */
-    public byte[] requestData() throws IOException {
-        return fetchData();
-    }
+  /**
+   * @return response content data
+   * @throws IOException when errors fetching data
+   */
+  public byte[] requestData() throws IOException {
+    return fetchData();
+  }
 
-    // connects to remote web service for endpoint type "web"
-    // or reads data from local filesystem for endpoint type "file"
-    // otherwise exception thrown.
-    private byte[] fetchData() throws IOException {
-        return UUID.randomUUID().toString().getBytes();
-    }
+  // connects to remote web service for endpoint type "web"
+  // or reads data from local filesystem for endpoint type "file"
+  // otherwise exception thrown.
+  private byte[] fetchData() throws IOException {
+    return UUID.randomUUID().toString().getBytes();
+  }
 
 }
