@@ -142,6 +142,7 @@
     <modules>
         <module>build-tools</module>
         <module>java-closures</module>
+        <module>java-crypto</module>
         <module>j2ee-http-request-dump</module>
         <module>j2ee-jaxrs-cookies</module>
         <module>j2ee-jdbc-query</module>

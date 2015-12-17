@@ -24,29 +24,10 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <artifactId>csaga-jaas</artifactId>
-            <groupId>ncsa-web</groupId>
-            <version>16.1.e</version>
-        </dependency>
-        <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
             <scope>provided</scope>
         </dependency>
     </dependencies>
-
-    <build>
-        <finalName>http-request-dump</finalName>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-war-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
 
 </project>
