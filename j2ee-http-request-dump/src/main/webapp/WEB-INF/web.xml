@@ -4,6 +4,22 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
 
+    <filter>
+        <description>X509Filter</description>
+        <display-name>X509Filter</display-name>
+        <filter-name>X509Filter</filter-name>
+        <filter-class>morbrian.j2eesandbox.requestdump.filter.X509Filter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>X509Filter</filter-name>
+        <url-pattern>/*</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>INCLUDE</dispatcher>
+        <dispatcher>FORWARD</dispatcher>
+        <dispatcher>ERROR</dispatcher>
+    </filter-mapping>
+
+
     <servlet>
         <servlet-name>SimpleRequestInspectorServlet</servlet-name>
         <servlet-class>morbrian.j2eesandbox.requestdump.SimpleRequestInspectorServlet
@@ -13,5 +29,7 @@
         <servlet-name>SimpleRequestInspectorServlet</servlet-name>
         <url-pattern>/inspect</url-pattern>
     </servlet-mapping>
+
+
 
 </web-app>

@@ -1,5 +1,9 @@
 package morbrian.j2eesandbox.requestdump.filter;
 
+import morbrian.j2eesandbox.requestdump.xfilter.X509Extraction;
+import morbrian.j2eesandbox.requestdump.xfilter.X509Identity;
+
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Enumeration;
@@ -54,5 +58,17 @@ public class ModifyHeaderServletRequestWrapper extends HttpServletRequestWrapper
     ArrayList<String> list = Collections.list(super.getHeaderNames());
     list.addAll(augmentedHeaders.keySet());
     return Collections.enumeration(augmentedHeaders.keySet());
+  }
+
+  @Override
+  public Principal getUserPrincipal() {
+//    HttpServletRequest httpRequest = null;
+//    if(request instanceof HttpServletRequest) {
+//      httpRequest = (HttpServletRequest)request;
+//    }
+    X509Identity certIdentity = X509Extraction.extractX509IdentityFromRequest(this);
+
+    return new SimplePrincipal(certIdentity.getCommonName());
+    //return super.getUserPrincipal();
   }
 }
