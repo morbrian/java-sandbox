@@ -15,9 +15,7 @@ import java.util.function.Consumer;
  */
 public class ListProcessorTest {
 
-  private static final int LIST_SIZE_SMALL = 100;
-  private static final int LIST_SIZE_MEDIUM = 10000;
-  private static final int LIST_SIZE_LARGE = 1000000;
+  private static final int LIST_SIZE = 1000;
 
   public void performTestSequence(TestHarness<?> testHarness, int size) {
     testHarness.generateList(size);
@@ -26,7 +24,7 @@ public class ListProcessorTest {
 
   @Before public void primer() {
     List<String> list = new ArrayList();
-    for (int i = 0; i < LIST_SIZE_LARGE; i++) {
+    for (int i = 0; i < LIST_SIZE; i++) {
       list.add(UUID.randomUUID().toString());
     }
     list.size();
@@ -34,16 +32,16 @@ public class ListProcessorTest {
 
   @Test public void allBenchMarks() {
     benchMarkActivity("linear-string-large", s -> {
-      performTestSequence(new StringTestHarness(new LinearListProcessor<>()), LIST_SIZE_LARGE);
+      performTestSequence(new StringTestHarness(new LinearListProcessor<>()), LIST_SIZE);
     });
     benchMarkActivity("linear-long-large", s -> {
-      performTestSequence(new LongTestHarness(new LinearListProcessor<>()), LIST_SIZE_LARGE);
+      performTestSequence(new LongTestHarness(new LinearListProcessor<>()), LIST_SIZE);
     });
     benchMarkActivity("parallel-string-large", s -> {
-      performTestSequence(new StringTestHarness(new ParallelListProcessor<>()), LIST_SIZE_LARGE);
+      performTestSequence(new StringTestHarness(new ParallelListProcessor<>()), LIST_SIZE);
     });
     benchMarkActivity("parallel-long-large", s -> {
-      performTestSequence(new LongTestHarness(new ParallelListProcessor<>()), LIST_SIZE_LARGE);
+      performTestSequence(new LongTestHarness(new ParallelListProcessor<>()), LIST_SIZE);
     });
   }
 
@@ -54,7 +52,7 @@ public class ListProcessorTest {
   private void benchMarkActivity(String tag, Consumer<?> test) {
 
     long total = 0;
-    long runCount = 5;
+    long runCount = 1;
 
     for (int i = 0; i < runCount; i++){
       long startTime = System.currentTimeMillis();
@@ -64,7 +62,7 @@ public class ListProcessorTest {
       total += runTime;
     }
 
-    System.out.println("[" + tag +"] Average Run time: " + total / runCount);
+    System.out.println("[" + tag +"] Tried " + runCount + " runs for Average Run time: " + total / runCount);
   }
 
 }
