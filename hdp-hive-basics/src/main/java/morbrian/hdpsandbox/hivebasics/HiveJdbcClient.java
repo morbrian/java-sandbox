@@ -1,20 +1,20 @@
 package morbrian.hdpsandbox.hivebasics;
 
-import java.sql.SQLException;
 import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.Statement;
 import java.sql.DriverManager;
- 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
 public class HiveJdbcClient {
   private static String driverName = "org.apache.hive.jdbc.HiveDriver";
- 
+
   /**
    * @param args
    * @throws SQLException
    */
   public static void main(String[] args) throws SQLException {
-      try {
+    try {
       Class.forName(driverName);
     } catch (ClassNotFoundException e) {
       // TODO Auto-generated catch block
@@ -26,22 +26,21 @@ public class HiveJdbcClient {
     Statement stmt = con.createStatement();
     String tableName = "testHiveDriverTable";
     stmt.execute("drop table if exists " + tableName);
-//    stmt.execute("create table " + tableName + " (key int, value string)");
+    //    stmt.execute("create table " + tableName + " (key int, value string)");
 
-    stmt.execute(
-    "CREATE TABLE " + tableName + " ( " +
+    stmt.execute("CREATE TABLE " + tableName + " ( " +
             "movie STRING, " +
             "rating STRING, " +
             "genre STRING) " //+
-//    "ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.OpenCSVSerde' " +
-//            " WITH SERDEPROPERTIES ( " +
-//                    "\"separatorChar\" = \",\" " +
-//                    //"\"quoteChar\"     = \"\\", " +
-//                    //"\"escapeChar\"    = \"\\\" " +
-//            ") " +
-//            "STORED AS TEXTFILE " +
-//            "LOCATION '/path/in/hdfs/to/csvfile'"
-            //"LOCATION 'http://192.168.1.65:8080/rdbms2hive/api/rest/csv/produce/myschema/mytable/myid'"
+        //    "ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.OpenCSVSerde' " +
+        //            " WITH SERDEPROPERTIES ( " +
+        //                    "\"separatorChar\" = \",\" " +
+        //                    //"\"quoteChar\"     = \"\\", " +
+        //                    //"\"escapeChar\"    = \"\\\" " +
+        //            ") " +
+        //            "STORED AS TEXTFILE " +
+        //            "LOCATION '/path/in/hdfs/to/csvfile'"
+        //"LOCATION 'http://192.168.1.65:8080/rdbms2hive/api/rest/csv/produce/myschema/mytable/myid'"
     );
 
     // show tables
@@ -53,11 +52,9 @@ public class HiveJdbcClient {
     }
 
 
-    stmt.execute(
-            "INSERT INTO " + tableName + " (movie, rating, genre)  VALUES " +
-                    "( 'Avatar', 'PG', 'Sci-Fi' ), " +
-                    "( 'How to Train Your Dragon', 'PG', 'Adventure' ) "
-    );
+    stmt.execute("INSERT INTO " + tableName + " (movie, rating, genre)  VALUES " +
+        "( 'Avatar', 'PG', 'Sci-Fi' ), " +
+        "( 'How to Train Your Dragon', 'PG', 'Adventure' ) ");
 
 
     // describe table
@@ -67,15 +64,15 @@ public class HiveJdbcClient {
     while (res.next()) {
       System.out.println(res.getString(1) + "\t" + res.getString(2));
     }
- 
-//    // load data into table
-//    // NOTE: filepath has to be local to the hive server
-//    // NOTE: /tmp/a.txt is a ctrl-A separated file with two fields per line
-//    String filepath = "/tmp/a.txt";
-//    sql = "load data local inpath '" + filepath + "' into table " + tableName;
-//    System.out.println("Running: " + sql);
-//    stmt.execute(sql);
- 
+
+    //    // load data into table
+    //    // NOTE: filepath has to be local to the hive server
+    //    // NOTE: /tmp/a.txt is a ctrl-A separated file with two fields per line
+    //    String filepath = "/tmp/a.txt";
+    //    sql = "load data local inpath '" + filepath + "' into table " + tableName;
+    //    System.out.println("Running: " + sql);
+    //    stmt.execute(sql);
+
     // select * query
     sql = "select * from " + tableName;
     System.out.println("Running: " + sql);
@@ -83,7 +80,7 @@ public class HiveJdbcClient {
     while (res.next()) {
       System.out.println(String.valueOf(res.getString(1)) + "\t" + res.getString(2));
     }
- 
+
     // regular hive query
     sql = "select count(1) from " + tableName;
     System.out.println("Running: " + sql);

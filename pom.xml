@@ -14,12 +14,15 @@
         <maven.war.plugin.version>2.6</maven.war.plugin.version>
         <maven.checkstyle.plugin.version>2.17</maven.checkstyle.plugin.version>
         <httpclient.version>4.5</httpclient.version>
-        <javaee.version>7.0</javaee.version>    
+        <javaee.version>7.0</javaee.version>
         <junit.version>4.11</junit.version>
+        <dbunit.version>2.5.1</dbunit.version>
         <jackson.version>2.6.3</jackson.version>
         <hadoop-common.version>2.7.1</hadoop-common.version>
         <hive-jdbc.version>1.2.1</hive-jdbc.version>
         <slf4j.version>1.7.12</slf4j.version>
+        <h2.version>1.4.190</h2.version>
+        <postgresql.version>9.4-1206-jdbc42</postgresql.version>
         <opencsv.version>3.4</opencsv.version>
     </properties>
 
@@ -46,9 +49,9 @@
                 <version>${opencsv.version}</version>
             </dependency>
             <dependency>
-               <groupId>org.apache.hive</groupId>
-               <artifactId>hive-jdbc</artifactId>
-               <version>${hive-jdbc.version}</version>
+                <groupId>org.apache.hive</groupId>
+                <artifactId>hive-jdbc</artifactId>
+                <version>${hive-jdbc.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.hadoop</groupId>
@@ -61,9 +64,29 @@
                 <version>${slf4j.version}</version>
             </dependency>
             <dependency>
+                <groupId>com.h2database</groupId>
+                <artifactId>h2</artifactId>
+                <version>${h2.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.postgresql</groupId>
+                <artifactId>postgresql</artifactId>
+                <version>${postgresql.version}</version>
+            </dependency>
+            <dependency>
                 <groupId>junit</groupId>
                 <artifactId>junit</artifactId>
                 <version>${junit.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.dbunit</groupId>
+                <artifactId>dbunit</artifactId>
+                <version>${dbunit.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-jdk14</artifactId>
+                <version>${slf4j.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -85,7 +108,7 @@
                     <artifactId>maven-war-plugin</artifactId>
                     <version>${maven.war.plugin.version}</version>
                     <configuration>
-                   </configuration>
+                    </configuration>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -118,9 +141,12 @@
 
     <modules>
         <module>build-tools</module>
+        <module>java-closures</module>
+        <module>java-crypto</module>
         <module>j2ee-http-request-dump</module>
         <module>j2ee-jaxrs-cookies</module>
         <module>j2ee-jdbc-query</module>
+        <module>j2ee-jdbc-test-tools</module>
         <module>j2ee-jpa-basics</module>
         <module>j2ee-rdbms2hive</module>
         <module>hdp-hive-basics</module>
@@ -128,4 +154,3 @@
     </modules>
 
 </project>
- 

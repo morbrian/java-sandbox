@@ -13,7 +13,7 @@
         <properties>
             <!-- uncommenting these properties will update the schema in the database, useful primarily for development -->
             <!-- these two are for the openjpa implementation native to TomEE -->
-            <property name="openjpa.jdbc.SynchronizeMappings" value="buildSchema" />
+            <property name="openjpa.jdbc.SynchronizeMappings" value="buildSchema"/>
             <property name="openjpa.InitializeEagerly" value="true"/>
             <!-- these net two are for the popular hibernate implementation of JPA -->
             <!-- <property name="hibernate.hbm2ddl.auto" value="create"/> -->
