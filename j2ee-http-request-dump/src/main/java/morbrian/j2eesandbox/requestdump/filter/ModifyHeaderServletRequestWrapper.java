@@ -1,9 +1,5 @@
 package morbrian.j2eesandbox.requestdump.filter;
 
-import morbrian.j2eesandbox.requestdump.xfilter.X509Extraction;
-import morbrian.j2eesandbox.requestdump.xfilter.X509Identity;
-
-import java.security.Principal;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Enumeration;
@@ -15,13 +11,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletRequestWrapper;
 
 /**
- * Created by morbrian on 8/23/14.
+ * Example of adding headers to servlet request.
+ * Calling setUid(..) or setRole(...) adds information to the headers.
  */
 public class ModifyHeaderServletRequestWrapper extends HttpServletRequestWrapper {
-
-  static {
-    System.err.println("LOADED ModifyHeaderServletRequestWrapper (1)");
-  }
 
   Map<String, List<String>> augmentedHeaders = new HashMap<String, List<String>>();
 
@@ -60,15 +53,4 @@ public class ModifyHeaderServletRequestWrapper extends HttpServletRequestWrapper
     return Collections.enumeration(augmentedHeaders.keySet());
   }
 
-  @Override
-  public Principal getUserPrincipal() {
-//    HttpServletRequest httpRequest = null;
-//    if(request instanceof HttpServletRequest) {
-//      httpRequest = (HttpServletRequest)request;
-//    }
-    X509Identity certIdentity = X509Extraction.extractX509IdentityFromRequest(this);
-
-    return new SimplePrincipal(certIdentity.getCommonName());
-    //return super.getUserPrincipal();
-  }
 }

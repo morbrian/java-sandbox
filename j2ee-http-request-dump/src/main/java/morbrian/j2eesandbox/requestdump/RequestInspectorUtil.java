@@ -8,7 +8,8 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 
 /**
- * Created by morbrian on 10/10/14.
+ * Useful for dumping ServletRequest parameters for debugging.
+ * D
  */
 public class RequestInspectorUtil {
   private final String EOL; // end of line

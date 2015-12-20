@@ -1,4 +1,4 @@
-package morbrian.j2eesandbox.requestdump.xfilter;
+package morbrian.j2eesandbox.requestdump.filter;
 
 public class X509Identity {
 

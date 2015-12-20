@@ -1,4 +1,4 @@
-package morbrian.j2eesandbox.requestdump.xfilter;
+package morbrian.j2eesandbox.requestdump.filter;
 
 import javax.enterprise.inject.Produces;
 import javax.servlet.ServletRequest;
@@ -8,7 +8,7 @@ import javax.servlet.annotation.WebListener;
 import javax.servlet.http.HttpServletRequest;
 
 @WebListener
-public class GeneralRequestInfoProducingServletListener implements ServletRequestListener {
+public class X509IdentityProducingServletListener implements ServletRequestListener {
 
     private static ThreadLocal<ServletRequest> SERVLET_REQUESTS = new ThreadLocal<ServletRequest>();
 
@@ -28,8 +28,8 @@ public class GeneralRequestInfoProducingServletListener implements ServletReques
     }
 
     @Produces
-    private GeneralRequestInfo obtainX509Identity() {
-        return new GeneralRequestInfo(obtainHttp());
+    private X509Identity obtainX509Identity() {
+        return X509Extraction.extractX509IdentityFromRequest(obtainHttp());
     }
 }
 

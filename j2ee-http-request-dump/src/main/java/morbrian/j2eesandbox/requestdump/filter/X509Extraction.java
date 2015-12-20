@@ -1,4 +1,4 @@
-package morbrian.j2eesandbox.requestdump.xfilter;
+package morbrian.j2eesandbox.requestdump.filter;
 
 import javax.servlet.http.HttpServletRequest;
 import java.security.Principal;
