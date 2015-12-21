@@ -7,7 +7,7 @@ import javax.servlet.ServletRequestListener;
 import javax.servlet.annotation.WebListener;
 import javax.servlet.http.HttpServletRequest;
 
-@WebListener
+//@WebListener
 public class GeneralRequestInfoProducingServletListener implements ServletRequestListener {
 
     private static ThreadLocal<ServletRequest> SERVLET_REQUESTS = new ThreadLocal<ServletRequest>();

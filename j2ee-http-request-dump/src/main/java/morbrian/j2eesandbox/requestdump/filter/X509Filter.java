@@ -1,5 +1,6 @@
 package morbrian.j2eesandbox.requestdump.filter;
 
+import javax.security.auth.login.LoginException;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
@@ -25,10 +26,17 @@ public class X509Filter implements Filter {
     X509UserPrincipalServletRequestWrapper wrappedRequest = null;
     try {
       wrappedRequest = new X509UserPrincipalServletRequestWrapper((HttpServletRequest) request);
-    } catch(ServletException exc) {
+    } catch(LoginException exc) {
       if (response instanceof HttpServletResponse) {
         HttpServletResponse httpResponse = (HttpServletResponse) response;
         httpResponse.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+        httpResponse.sendError(HttpServletResponse.SC_UNAUTHORIZED, exc.getMessage());
+      }
+    } catch(ServletException exc) {
+      if (response instanceof HttpServletResponse) {
+        HttpServletResponse httpResponse = (HttpServletResponse) response;
+        httpResponse.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+        httpResponse.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, exc.getMessage());
       }
     }
     if (wrappedRequest != null) {

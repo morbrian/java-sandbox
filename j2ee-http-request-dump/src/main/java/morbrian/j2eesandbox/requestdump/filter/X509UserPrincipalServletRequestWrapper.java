@@ -1,5 +1,6 @@
 package morbrian.j2eesandbox.requestdump.filter;
 
+import javax.security.auth.login.LoginException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletRequestWrapper;
@@ -10,21 +11,22 @@ public class X509UserPrincipalServletRequestWrapper extends HttpServletRequestWr
 
  // private Principal principal;
 
-  public X509UserPrincipalServletRequestWrapper(HttpServletRequest request) throws ServletException {
+  public X509UserPrincipalServletRequestWrapper(HttpServletRequest request)
+      throws ServletException, LoginException {
     super(request);
     loginToSetPrincipal(request);
   }
 
-  private void loginToSetPrincipal(HttpServletRequest request) throws ServletException {
-    String username = X509Extraction.extractCnFromRequest(request);
-    if (username != null) {
-      //TODO: CSAGA only matches lower case usernames
-      username = username.toLowerCase();
-    }
+  private void loginToSetPrincipal(HttpServletRequest request)
+      throws ServletException, LoginException {
+//    String username = X509Extraction.extractCnFromRequest(request);
+    String username = X509Extraction.extractPrimaryLdifFromRequest(request);
 
+
+    //username = "dev_moore";
     // fail if no user can be identified
     if (username == null) {
-      throw new IllegalArgumentException("No common name in PKI certificate, unable to authenticate.");
+      throw new LoginException("No identity in certificate, unable to authenticate.");
     }
 
     Principal superPrincipal = super.getUserPrincipal();
@@ -35,8 +37,11 @@ public class X509UserPrincipalServletRequestWrapper extends HttpServletRequestWr
         HttpServletRequest httpRequest = (HttpServletRequest)request;
         httpRequest.getSession();
         if (username != null) {
-          username = "dev_moore";
-          httpRequest.login(username, "changeme");
+          try {
+            httpRequest.login(username, "changeme");
+          } catch(Exception exc) {
+            throw new LoginException("Login failed for " + username);
+          }
         }
       }
     }
