@@ -16,6 +16,7 @@ import java.util.function.Consumer;
 public class ListProcessorTest {
 
   private static final int LIST_SIZE = 1000;
+  private Map<String, Long> totals = new HashMap<>();
 
   public void performTestSequence(TestHarness<?> testHarness, int size) {
     testHarness.generateList(size);
@@ -45,16 +46,12 @@ public class ListProcessorTest {
     });
   }
 
-
-
-  private Map<String, Long> totals = new HashMap<>();
-
   private void benchMarkActivity(String tag, Consumer<?> test) {
 
     long total = 0;
     long runCount = 1;
 
-    for (int i = 0; i < runCount; i++){
+    for (int i = 0; i < runCount; i++) {
       long startTime = System.currentTimeMillis();
       test.accept(null);
       long stopTime = System.currentTimeMillis();
@@ -62,7 +59,8 @@ public class ListProcessorTest {
       total += runTime;
     }
 
-    System.out.println("[" + tag +"] Tried " + runCount + " runs for Average Run time: " + total / runCount);
+    System.out.println(
+        "[" + tag + "] Tried " + runCount + " runs for Average Run time: " + total / runCount);
   }
 
 }

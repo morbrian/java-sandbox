@@ -1,13 +1,12 @@
 package morbrian.j2eesandbox.jpabasics.persistence.service;
 
+import morbrian.j2eesandbox.jpabasics.persistence.model.DerivedDocumentEntity;
+import morbrian.j2eesandbox.jpabasics.persistence.model.RawDocumentEntity;
 import org.slf4j.Logger;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
-
-import morbrian.j2eesandbox.jpabasics.persistence.model.DerivedDocumentEntity;
-import morbrian.j2eesandbox.jpabasics.persistence.model.RawDocumentEntity;
 
 /**
  * Created by morbrian on 6/17/15.

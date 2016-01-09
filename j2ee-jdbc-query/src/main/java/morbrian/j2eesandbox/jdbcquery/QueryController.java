@@ -1,19 +1,16 @@
 package morbrian.j2eesandbox.jdbcquery;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-
+import morbrian.j2eesandbox.jdbcquery.database.Database;
+import morbrian.j2eesandbox.jdbcquery.model.NamesAndRecords;
 import org.slf4j.Logger;
 
+import javax.ejb.Singleton;
+import javax.inject.Inject;
 import java.io.IOException;
 import java.io.StringWriter;
 import java.io.Writer;
 import java.util.List;
-
-import javax.ejb.Singleton;
-import javax.inject.Inject;
-
-import morbrian.j2eesandbox.jdbcquery.database.Database;
-import morbrian.j2eesandbox.jdbcquery.model.NamesAndRecords;
 
 @Singleton public class QueryController {
 

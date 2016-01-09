@@ -1,25 +1,14 @@
 package morbrian.sandbox.j2ee.rdbms2hive.database;
 
+import morbrian.sandbox.j2ee.rdbms2hive.model.NamesAndRecords;
 import org.slf4j.Logger;
-
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
 
 import javax.annotation.Resource;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.sql.DataSource;
-
-import morbrian.sandbox.j2ee.rdbms2hive.model.NamesAndRecords;
+import java.sql.*;
+import java.util.*;
 
 /**
  * Created by hikethru08 on 11/15/15.

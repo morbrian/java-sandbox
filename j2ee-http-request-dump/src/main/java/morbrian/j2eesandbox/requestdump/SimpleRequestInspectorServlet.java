@@ -1,9 +1,8 @@
 package morbrian.j2eesandbox.requestdump;
 
-import java.io.IOException;
-
 import javax.annotation.security.DeclareRoles;
 import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
 
 @DeclareRoles("reader")
 public class SimpleRequestInspectorServlet extends javax.servlet.http.HttpServlet {

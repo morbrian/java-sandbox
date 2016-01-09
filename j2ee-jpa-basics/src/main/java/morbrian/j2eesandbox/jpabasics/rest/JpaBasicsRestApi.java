@@ -1,8 +1,11 @@
 package morbrian.j2eesandbox.jpabasics.rest;
 
+import morbrian.j2eesandbox.jpabasics.digest.DigestController;
+import morbrian.j2eesandbox.jpabasics.persistence.data.DocumentRepository;
+import morbrian.j2eesandbox.jpabasics.persistence.model.DerivedDocumentEntity;
+import morbrian.j2eesandbox.jpabasics.persistence.model.RawDocumentEntity;
+import morbrian.j2eesandbox.jpabasics.persistence.service.DocumentPersistence;
 import org.slf4j.Logger;
-
-import java.util.List;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -11,12 +14,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
-
-import morbrian.j2eesandbox.jpabasics.digest.DigestController;
-import morbrian.j2eesandbox.jpabasics.persistence.data.DocumentRepository;
-import morbrian.j2eesandbox.jpabasics.persistence.model.DerivedDocumentEntity;
-import morbrian.j2eesandbox.jpabasics.persistence.model.RawDocumentEntity;
-import morbrian.j2eesandbox.jpabasics.persistence.service.DocumentPersistence;
+import java.util.List;
 
 
 // TODO: [BCM] we will either decide what methods we need for system troubleshooting, or delete the REST service entirely.

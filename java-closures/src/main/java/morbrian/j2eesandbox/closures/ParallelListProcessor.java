@@ -1,9 +1,7 @@
 package morbrian.j2eesandbox.closures;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Vector;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -18,7 +16,7 @@ public class ParallelListProcessor<T> implements ListProcessor<T> {
     return this.inputList = Collections.unmodifiableList(list);
   }
 
-  @Override public List<T> transformList(Function<T,T> transformation) {
+  @Override public List<T> transformList(Function<T, T> transformation) {
     if (transformation == null) {
       return inputList.parallelStream().map(item -> {
         return item;

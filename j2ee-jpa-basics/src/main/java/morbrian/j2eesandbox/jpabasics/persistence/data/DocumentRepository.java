@@ -1,8 +1,9 @@
 package morbrian.j2eesandbox.jpabasics.persistence.data;
 
+import morbrian.j2eesandbox.jpabasics.persistence.model.DerivedDocumentEntity;
+import morbrian.j2eesandbox.jpabasics.persistence.model.DocSource;
+import morbrian.j2eesandbox.jpabasics.persistence.model.RawDocumentEntity;
 import org.slf4j.Logger;
-
-import java.util.List;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
@@ -12,10 +13,7 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
-
-import morbrian.j2eesandbox.jpabasics.persistence.model.DerivedDocumentEntity;
-import morbrian.j2eesandbox.jpabasics.persistence.model.DocSource;
-import morbrian.j2eesandbox.jpabasics.persistence.model.RawDocumentEntity;
+import java.util.List;
 
 @ApplicationScoped public class DocumentRepository {
   @Inject private Logger log;

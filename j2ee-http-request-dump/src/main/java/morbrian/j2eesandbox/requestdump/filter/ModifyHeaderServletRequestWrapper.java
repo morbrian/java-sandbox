@@ -1,14 +1,8 @@
 package morbrian.j2eesandbox.requestdump.filter;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Enumeration;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletRequestWrapper;
+import java.util.*;
 
 /**
  * Example of adding headers to servlet request.

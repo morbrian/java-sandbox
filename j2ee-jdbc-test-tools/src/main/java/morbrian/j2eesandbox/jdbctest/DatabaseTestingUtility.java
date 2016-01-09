@@ -31,6 +31,11 @@ public class DatabaseTestingUtility {
     this.sqlDataFolder = sqlDataFolder;
   }
 
+  private static Connection getConnection(String databaseUrl, String databaseUser,
+      String databasePassword) throws SQLException {
+    return DriverManager.getConnection(databaseUrl, databaseUser, databasePassword);
+  }
+
   public String getDatabaseUser() {
     String user = getProperty(DBUSER_PROPERTY);
     return (user != null) ? user : "";
@@ -60,11 +65,6 @@ public class DatabaseTestingUtility {
     }
     connectionUrl = dbUrl;
     return connectionUrl;
-  }
-
-  private static Connection getConnection(String databaseUrl, String databaseUser,
-      String databasePassword) throws SQLException {
-    return DriverManager.getConnection(databaseUrl, databaseUser, databasePassword);
   }
 
   public synchronized Connection getConnection() throws SQLException {

@@ -1,15 +1,7 @@
 package morbrian.j2eesandbox.jpabasics.persistence.model;
 
+import javax.persistence.*;
 import java.util.Calendar;
-
-import javax.persistence.Column;
-import javax.persistence.EntityListeners;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.MappedSuperclass;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 /**
  * Created by morbrian on 6/17/15.

@@ -2,26 +2,19 @@ package morbrian.j2eesandbox.jpabasics.digest;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
+import morbrian.j2eesandbox.jpabasics.persistence.data.DocumentRepository;
+import morbrian.j2eesandbox.jpabasics.persistence.model.*;
+import morbrian.j2eesandbox.jpabasics.persistence.service.DocumentPersistence;
 import org.apache.commons.codec.digest.MessageDigestAlgorithms;
 import org.slf4j.Logger;
 
+import javax.ejb.Singleton;
+import javax.inject.Inject;
 import java.io.IOException;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Calendar;
-
-import javax.ejb.Singleton;
-import javax.inject.Inject;
-
-import morbrian.j2eesandbox.jpabasics.persistence.data.DocumentRepository;
-import morbrian.j2eesandbox.jpabasics.persistence.model.DerivedDocumentEntity;
-import morbrian.j2eesandbox.jpabasics.persistence.model.DocFormat;
-import morbrian.j2eesandbox.jpabasics.persistence.model.DocSource;
-import morbrian.j2eesandbox.jpabasics.persistence.model.DocType;
-import morbrian.j2eesandbox.jpabasics.persistence.model.RawDocumentEntity;
-import morbrian.j2eesandbox.jpabasics.persistence.service.DocumentPersistence;
 
 @Singleton public class DigestController {
 

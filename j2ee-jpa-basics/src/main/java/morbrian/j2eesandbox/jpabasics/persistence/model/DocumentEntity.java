@@ -1,10 +1,6 @@
 package morbrian.j2eesandbox.jpabasics.persistence.model;
 
-import javax.persistence.Column;
-import javax.persistence.EntityListeners;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.MappedSuperclass;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 /**

@@ -1,19 +1,16 @@
 package morbrian.sandbox.j2ee.rdbms2hive;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-
+import morbrian.sandbox.j2ee.rdbms2hive.database.Database;
+import morbrian.sandbox.j2ee.rdbms2hive.model.NamesAndRecords;
 import org.slf4j.Logger;
 
+import javax.ejb.Singleton;
+import javax.inject.Inject;
 import java.io.IOException;
 import java.io.StringWriter;
 import java.io.Writer;
 import java.util.List;
-
-import javax.ejb.Singleton;
-import javax.inject.Inject;
-
-import morbrian.sandbox.j2ee.rdbms2hive.database.Database;
-import morbrian.sandbox.j2ee.rdbms2hive.model.NamesAndRecords;
 
 @Singleton public class ServiceController {
 

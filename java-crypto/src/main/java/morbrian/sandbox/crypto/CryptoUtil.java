@@ -40,9 +40,10 @@ public class CryptoUtil {
 
   /**
    * Encrypts the given string using AES and the given key.
+   *
    * @param plainText The plaintext to encrypt.
-   * @param key The key to use for encrypting.
-   * @param keySize The size of the provided `key`.
+   * @param key       The key to use for encrypting.
+   * @param keySize   The size of the provided `key`.
    */
   public static String encryptAes(String plainText, String key, int keySize)
       throws UnsupportedEncodingException, IllegalBlockSizeException, InvalidKeyException,
@@ -63,7 +64,7 @@ public class CryptoUtil {
   /**
    * Generates an AES key of the given size and returns it as a hexadecimal string.
    */
- public static String generateAesKeyString(int size) throws NoSuchAlgorithmException {
+  public static String generateAesKeyString(int size) throws NoSuchAlgorithmException {
     return DatatypeConverter.printHexBinary(generateAesKey(size).getEncoded());
   }
 
@@ -81,16 +82,18 @@ public class CryptoUtil {
 
   /**
    * Decrypts the given string using AES and the given key.
+   *
    * @param encrypted A concatenation of the initialization vector and the cipher text to be decrypted.
    *                  The first 16 bytes must be the initialization vector.
-   * @param key The key to use for decrypting.
-   * @param keySize (_optional_) The size of the provided `key`. If omitted, it's assumed to be 256 bits.
+   * @param key       The key to use for decrypting.
+   * @param keySize   (_optional_) The size of the provided `key`. If omitted, it's assumed to be 256 bits.
    */
   public static String decryptAes(String encrypted, String key, int keySize)
       throws BadPaddingException, InvalidKeyException, NoSuchAlgorithmException,
       IllegalBlockSizeException, NoSuchPaddingException, InvalidAlgorithmParameterException,
       UnsupportedEncodingException {
-    byte[] bytes = decryptAes(hex2bytes(encrypted), new SecretKeySpec(DatatypeConverter.parseHexBinary(key), ALGORITHM_AES));
+    byte[] bytes = decryptAes(hex2bytes(encrypted),
+        new SecretKeySpec(DatatypeConverter.parseHexBinary(key), ALGORITHM_AES));
     return new String(bytes, UTF8);
   }
 
@@ -98,7 +101,7 @@ public class CryptoUtil {
    * Returns the initialization vector portion of the given byte array (the first 16 bytes).
    */
   private static byte[] getAesInitializationVector(byte[] bytes) {
-    assert(bytes.length > INIT_VECTOR_SIZE_AES_CBC);
+    assert (bytes.length > INIT_VECTOR_SIZE_AES_CBC);
     return Arrays.copyOf(bytes, INIT_VECTOR_SIZE_AES_CBC);
   }
 
@@ -106,7 +109,7 @@ public class CryptoUtil {
    * Returns the cipher text portion of the given byte array (everything after the first 16 bytes).
    */
   private static byte[] getAesCipherText(byte[] bytes) {
-    assert(bytes.length >= INIT_VECTOR_SIZE_AES_CBC + MIN_TEXT_LENGTH);
+    assert (bytes.length >= INIT_VECTOR_SIZE_AES_CBC + MIN_TEXT_LENGTH);
     return Arrays.copyOfRange(bytes, INIT_VECTOR_SIZE_AES_CBC, bytes.length);
   }
 
@@ -116,8 +119,8 @@ public class CryptoUtil {
     int len = hex.length();
     byte[] data = new byte[len / 2];
     for (int i = 0; i < len; i += 2) {
-      data[i / 2] = (byte) ((Character.digit(hex.charAt(i), 16) << 4)
-          + Character.digit(hex.charAt(i+1), 16));
+      data[i / 2] = (byte) ((Character.digit(hex.charAt(i), 16) << 4) + Character
+          .digit(hex.charAt(i + 1), 16));
     }
     return data;
   }

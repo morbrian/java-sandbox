@@ -1,12 +1,7 @@
 package morbrian.j2eesandbox.jdbcquery.rest;
 
+import morbrian.j2eesandbox.jdbcquery.QueryController;
 import org.slf4j.Logger;
-
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.concurrent.Executors;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -15,8 +10,11 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
-
-import morbrian.j2eesandbox.jdbcquery.QueryController;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.concurrent.Executors;
 
 
 @Path("/database") @RequestScoped public class JdbcQueryRestApi {

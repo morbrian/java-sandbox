@@ -16,7 +16,7 @@ public class LinearListProcessor<T> implements ListProcessor<T> {
     return this.inputList = Collections.unmodifiableList(list);
   }
 
-  @Override public List<T> transformList(Function<T,T> transformation) {
+  @Override public List<T> transformList(Function<T, T> transformation) {
     List<T> outputList = new ArrayList<>(inputList.size());
     if (transformation == null) {
       inputList.forEach(item -> {

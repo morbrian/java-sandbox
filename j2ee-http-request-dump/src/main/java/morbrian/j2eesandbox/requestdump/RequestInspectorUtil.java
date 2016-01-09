@@ -1,11 +1,10 @@
 package morbrian.j2eesandbox.requestdump;
 
+import javax.servlet.http.HttpServletRequest;
 import java.security.Principal;
 import java.security.cert.X509Certificate;
 import java.util.Enumeration;
 import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
 
 /**
  * Useful for dumping ServletRequest parameters for debugging.

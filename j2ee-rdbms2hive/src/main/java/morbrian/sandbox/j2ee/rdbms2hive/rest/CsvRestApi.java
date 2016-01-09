@@ -1,11 +1,7 @@
 package morbrian.sandbox.j2ee.rdbms2hive.rest;
 
+import morbrian.sandbox.j2ee.rdbms2hive.ServiceController;
 import org.slf4j.Logger;
-
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
-import java.util.concurrent.Executors;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -14,8 +10,10 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
-
-import morbrian.sandbox.j2ee.rdbms2hive.ServiceController;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
+import java.util.concurrent.Executors;
 
 
 @Path("/csv") @RequestScoped public class CsvRestApi {

@@ -2,19 +2,14 @@ package morbrian.sandbox.j2ee.cookie.rest;
 
 import org.slf4j.Logger;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
-import javax.ws.rs.CookieParam;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.NewCookie;
 import javax.ws.rs.core.Response;
+import java.util.HashMap;
+import java.util.Map;
 
 
 @Path("/gogo") @RequestScoped public class CookieExampleRestApi {

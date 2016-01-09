@@ -7,6 +7,6 @@ public interface ListProcessor<T> {
 
   public List<T> stageList(List<T> list);
 
-  public List<T> transformList(Function<T,T> tranformation);
+  public List<T> transformList(Function<T, T> tranformation);
 
 }

@@ -1,22 +1,16 @@
 package morbrian.j2eesandbox.jdbcquery.database;
 
+import morbrian.j2eesandbox.jdbcquery.model.NamesAndRecords;
 import org.slf4j.Logger;
-
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
+import org.slf4j.LoggerFactory;
 
 import javax.annotation.Resource;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.sql.DataSource;
-
-import morbrian.j2eesandbox.jdbcquery.model.NamesAndRecords;
-import org.slf4j.LoggerFactory;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by hikethru08 on 11/15/15.

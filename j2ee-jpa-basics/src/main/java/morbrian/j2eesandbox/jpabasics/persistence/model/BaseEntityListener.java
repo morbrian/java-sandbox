@@ -1,9 +1,8 @@
 package morbrian.j2eesandbox.jpabasics.persistence.model;
 
-import java.util.Calendar;
-
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
+import java.util.Calendar;
 
 /**
  * Created by morbrian on 6/18/15.
