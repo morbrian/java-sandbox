@@ -21,8 +21,13 @@
 
   <security-constraint>
     <web-resource-collection>
-      <web-resource-name>SimpleRequestInspectorServlet</web-resource-name>
+      <web-resource-name>world-api</web-resource-name>
       <url-pattern>/api/rest/world/*</url-pattern>
+    </web-resource-collection>
+    <web-resource-collection>
+      <!-- unfortunately tomcat does not produce principal for unprotected links -->
+      <web-resource-name>whoami</web-resource-name>
+      <url-pattern>/api/rest/auth/whoami</url-pattern>
     </web-resource-collection>
     <auth-constraint>
       <!-- must specify roles: if no roles are specified, no principal is produced -->
