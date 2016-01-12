@@ -183,11 +183,18 @@
   <profiles>
     <profile>
       <id>wildfy902-embedded</id>
+      <activation>
+        <file>
+          <!-- only enabled for marked child modules -->
+          <exists>${basedir}/src/test/.embedded-marker</exists>
+        </file>
+      </activation>
       <dependencies>
         <dependency>
           <groupId>org.wildfly.arquillian</groupId>
           <artifactId>wildfly-arquillian-container-embedded</artifactId>
           <version>1.0.2.Final</version>
+          <scope>test</scope>
         </dependency>
         <dependency>
           <groupId>com.fasterxml.jackson.core</groupId>
@@ -197,11 +204,20 @@
           <groupId>org.wildfly</groupId>
           <artifactId>wildfly-embedded</artifactId>
           <version>${wildfly.version}</version>
+          <scope>test</scope>
         </dependency>
       </dependencies>
 
       <build>
         <finalName>${project.artifactId}</finalName>
+        <testResources>
+          <!--<testResource>-->
+            <!--<directory>src/test/resources</directory>-->
+          <!--</testResource>-->
+          <testResource>
+            <directory>src/test/resources-wildfly-embedded</directory>
+          </testResource>
+        </testResources>
         <plugins>
           <!-- You need the maven dependency plugin to download locally a zip with the server, unless you provide your own, it will download under the /target directory -->
           <plugin>
@@ -235,9 +251,6 @@
             <artifactId>maven-surefire-plugin</artifactId>
             <version>${maven.surefire.plugin.version}</version>
             <configuration>
-              <includes>
-                <include>**/*ARQ.java</include>
-              </includes>
               <!-- Fork every test because it will launch a separate AS instance -->
               <forkMode>always</forkMode>
               <environmentVariables>
