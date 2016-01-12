@@ -1,9 +1,8 @@
 CREATE TABLE user_group_relation
 (
-  id bigint NOT NULL,
+  id serial primary key,
   user_id bigint,
   group_id bigint,
-  CONSTRAINT user_group_relation_pkey PRIMARY KEY (id),
   CONSTRAINT user_group_relation_group_id_fkey FOREIGN KEY (group_id)
       REFERENCES groups (id) MATCH SIMPLE
       ON UPDATE NO ACTION ON DELETE NO ACTION,

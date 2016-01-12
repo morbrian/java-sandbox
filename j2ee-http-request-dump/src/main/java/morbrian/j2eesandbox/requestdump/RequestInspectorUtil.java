@@ -8,7 +8,7 @@ import java.util.Map;
 
 /**
  * Useful for dumping ServletRequest parameters for debugging.
- * D
+ *
  */
 public class RequestInspectorUtil {
   private final String EOL; // end of line
