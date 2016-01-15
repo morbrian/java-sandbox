@@ -185,7 +185,6 @@
       <id>wildfy902-embedded</id>
       <activation>
         <file>
-          <!-- only enabled for marked child modules -->
           <exists>${basedir}/src/test/.embedded-marker</exists>
         </file>
       </activation>
@@ -195,10 +194,6 @@
           <artifactId>wildfly-arquillian-container-embedded</artifactId>
           <version>1.0.2.Final</version>
           <scope>test</scope>
-        </dependency>
-        <dependency>
-          <groupId>com.fasterxml.jackson.core</groupId>
-          <artifactId>jackson-databind</artifactId>
         </dependency>
         <dependency>
           <groupId>org.wildfly</groupId>
