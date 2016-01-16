@@ -258,6 +258,7 @@
                 <jboss.home>${project.basedir}/target/wildfly-${wildfly.version}</jboss.home>
                 <module.path>${project.basedir}/target/wildfly-${wildfly.version}/modules
                 </module.path>
+                <jboss.socket.binding.port-offset>101</jboss.socket.binding.port-offset>
               </systemPropertyVariables>
               <redirectTestOutputToFile>false</redirectTestOutputToFile>
             </configuration>
